@@ -1,8 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
       body{
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
           font-family: 'Plus Jakarta Sans', sans-serif;
       }
   `;
@@ -15,7 +15,7 @@ const colors = {
   "blue-faux": "#292772",
   "red-candy-apple": "#FF1010",
   "yellow-faux": "#FAC736",
-  "pink-sasquatch": "#FAC736",
+  "pink-sasquatch": "#F5487F",
   "blue-faux-picton": "#44C2FD",
   "light-silver": "#D8D8D8",
   "philippine-grey": "#8C8C8C",
@@ -35,7 +35,18 @@ const fontSize = {
   "body-small": "13px",
   "extra-small": "10px",
 };
+const lineHeight = {
+  heading1: "83px",
+  heading2: "63px",
+  heading3: "51px",
+  heading4: "39px",
+  heading5: "32px",
+  heading6: "24px",
+  body: "24px",
+  "body-small": "20px",
+  "extra-small": "15px",
+};
 
-export { colors, fontSize, GlobalStyle };
+export { colors, fontSize, lineHeight, GlobalStyle };
 
 //esqueletonCard
