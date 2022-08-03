@@ -1,10 +1,11 @@
-import { Button } from '../components/'
+import { Button } from "../components/";
+import { GlobalStyle } from "../styles/theme";
 
 const Home = () => (
   <>
-    <Button text="Typescript" onClick={() => console.log('clicked')} />
-    <Button text="Typescripts" onClick={() => alert('clicked')} color="red" />
+    <Button text="Button" onClick={() => console.log("clicked")} disabled={false} />
+    <Button text="Disabled Button" onClick={() => console.log("clicked")} disabled={true}/>
   </>
-)
+);
 
-export default Home
+export default Home;

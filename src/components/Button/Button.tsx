@@ -1,28 +1,33 @@
-import styled from 'styled-components'
-import { colors } from '../../styles/theme'
+import styled from "styled-components";
+import { colors, fontSize, lineHeight } from "../../styles/theme";
 
 interface ButtonProps {
-  text: string
-  onClick: () => void
-  color?: string
+  text: string;
+  onClick: () => void;
+  disabled: boolean;
 }
 const ButtonStyled = styled.button`
-  border: 1px solid red;
-  height: 30px;
-  background-color: ${props => props.color};
+  height: 40px;
+  width: 150px;
+  border: none;
+  background-color: ${colors["pink-sasquatch"]};
+  border-radius: 10px;
+  font-size: ${fontSize["body-small"]};
+  color: #ffffff;
+  font-weight: 700;
+  line-height: ${lineHeight["body-small"]};
   &:hover {
-    background-color: red;
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.5));
   }
-  &:focus {
-    background-color: blue;
+  &:disabled {
+    background-color: rgba(245, 72, 127, 0.5);
   }
-  color: ${colors['blue-maximum']};
-`
+`;
 
-const Button = ({ onClick, text, color }: ButtonProps) => (
-  <ButtonStyled color={color} onClick={onClick}>
+const Button = ({ onClick, text, disabled }: ButtonProps) => (
+  <ButtonStyled onClick={onClick} disabled={disabled}>
     {text}
   </ButtonStyled>
-)
+);
 
-export default Button
+export default Button;
