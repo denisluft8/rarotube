@@ -1,10 +1,20 @@
-import { Button } from "../components/";
-import { GlobalStyle } from "../styles/theme";
+import { Button, SkeletonCard, VideoCard } from "../components/";
+import imagevideotest from "../assets/imagevideotest.svg";
 
 const Home = () => (
   <>
-    <Button text="Button" onClick={() => console.log("clicked")} disabled={false} />
-    <Button text="Disabled Button" onClick={() => console.log("clicked")} disabled={true}/>
+    <Button
+      text="Button"
+      onClick={() => console.log("clicked")}
+      disabled={false}
+    />
+    <Button
+      text="Disabled Button"
+      onClick={() => console.log("clicked")}
+      disabled={true}
+    />
+    <VideoCard image={imagevideotest} />
+    <SkeletonCard />
   </>
 );
 
