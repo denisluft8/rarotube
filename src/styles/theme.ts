@@ -41,6 +41,7 @@ const lineHeight = {
 };
 
 const GlobalStyle = createGlobalStyle`
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
       body{
         background-color: ${colors["faux-smoky-grey"]};
       }
