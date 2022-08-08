@@ -1,12 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-const GlobalStyle = createGlobalStyle`
-      body{
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
-          font-family: 'Plus Jakarta Sans', sans-serif;
-      }
-  `;
-
 const colors = {
   "blue-maximum": "#B5B3E6",
   "blue-violet": "#7A75D1",
@@ -22,8 +15,8 @@ const colors = {
   "davys-grey": "#555555",
   "faux-olive-grey": "#404040",
   "faux-smoky-grey": "#0D0D0D",
+  white: "#FFFFFF",
 };
-
 const fontSize = {
   heading1: "55px",
   heading2: "42px",
@@ -46,6 +39,16 @@ const lineHeight = {
   "body-small": "20px",
   "extra-small": "15px",
 };
+
+const GlobalStyle = createGlobalStyle`
+      body{
+        background-color: ${colors["faux-smoky-grey"]};
+      }
+      @font-face {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        src: url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
+      }
+  `;
 
 export { colors, fontSize, lineHeight, GlobalStyle };
 
