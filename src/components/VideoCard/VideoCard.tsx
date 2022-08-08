@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { colors, fontSize, lineHeight } from "../../styles/theme";
 import favorite from "../../assets/favorite.svg";
+import FavoriteIcon from "../Icons/FavoriteIcon";
 
 interface VideoCardProps {
   image: string;
@@ -46,27 +47,32 @@ const DateStyled = styled.p`
   padding-left: 14px;
 `;
 
-const FavoriteStyled = styled.input`
-  box-sizing: border-box;
-  width: 19.25px;
-  height: 17.96px;
-  margin-right: 14px;
-  &:hover {
-    filter: invert(43%) sepia(81%) saturate(3247%) hue-rotate(316deg)
-      brightness(101%) contrast(92%);
-  }
-`;
+// const FavoriteStyled = styled.input`
+//   box-sizing: border-box;
+//   width: 19.25px;
+//   height: 17.96px;
+//   margin-right: 14px;
+//   &:hover {
+//     filter: invert(43%) sepia(81%) saturate(3247%) hue-rotate(316deg)
+//       brightness(101%) contrast(92%);
+//   }
+// `;
 
-const VideoCard = ({ image }: VideoCardProps) => (
-  <VideoCardStyled image={image}>
-    <FooterStyled>
-      <TextContainerStyled>
-        <TitleStyled>Meowth and walk away</TitleStyled>
-        <DateStyled>Ago2020</DateStyled>
-      </TextContainerStyled>
-      <FavoriteStyled type="image" src={favorite}></FavoriteStyled>
-    </FooterStyled>
-  </VideoCardStyled>
-);
+const VideoCard = ({ image }: VideoCardProps) => {
+  const test = (x: string) => console.log(x);
+
+  return (
+    <VideoCardStyled image={image}>
+      <FooterStyled>
+        <TextContainerStyled>
+          <TitleStyled>Meowth and walk away</TitleStyled>
+          <DateStyled>Ago2020</DateStyled>
+        </TextContainerStyled>
+        <FavoriteIcon />
+        {/* <FavoriteStyled type="image" src={favorite}></FavoriteStyled> */}
+      </FooterStyled>
+    </VideoCardStyled>
+  );
+};
 
 export default VideoCard;
