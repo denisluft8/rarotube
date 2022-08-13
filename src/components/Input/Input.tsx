@@ -22,11 +22,10 @@ const InputStyled = styled.input<InputProps>`
   border: none;
 
   &::placeholder {
-    color: ${(props) => props.theme.colors.secondary};
+    color: ${(props) => props.theme.colors.placeholder};
     font-size: 16px;
     font-weight: ${fontSize["body"]};
     line-height: ${lineHeight["body"]};
-    
   }
 `;
 

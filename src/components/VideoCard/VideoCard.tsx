@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { colors, fontSize, lineHeight } from "../../styles/theme";
-import favorite from "../../assets/favorite.svg";
 import FavoriteIcon from "../Icons/FavoriteIcon";
 
 interface VideoCardProps {
@@ -33,7 +32,7 @@ const TextContainerStyled = styled.div`
 `;
 
 const TitleStyled = styled.p`
-  color: ${colors["white"]};
+  color: white;
   font-size: ${fontSize["body-small"]};
   line-height: ${lineHeight["body-small"]};
   margin: 0;
@@ -47,17 +46,6 @@ const DateStyled = styled.p`
   padding-left: 14px;
 `;
 
-// const FavoriteStyled = styled.input`
-//   box-sizing: border-box;
-//   width: 19.25px;
-//   height: 17.96px;
-//   margin-right: 14px;
-//   &:hover {
-//     filter: invert(43%) sepia(81%) saturate(3247%) hue-rotate(316deg)
-//       brightness(101%) contrast(92%);
-//   }
-// `;
-
 const VideoCard = ({ image }: VideoCardProps) => {
   const test = (x: string) => console.log(x);
 
@@ -69,7 +57,6 @@ const VideoCard = ({ image }: VideoCardProps) => {
           <DateStyled>Ago2020</DateStyled>
         </TextContainerStyled>
         <FavoriteIcon />
-        {/* <FavoriteStyled type="image" src={favorite}></FavoriteStyled> */}
       </FooterStyled>
     </VideoCardStyled>
   );

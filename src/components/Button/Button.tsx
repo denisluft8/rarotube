@@ -10,6 +10,7 @@ const ButtonStyled = styled.button`
   height: 40px;
   width: 150px;
   border: none;
+  cursor: pointer;
   background-color: ${colors["pink-sasquatch"]};
   border-radius: 10px;
   font-size: ${fontSize["body-small"]};
