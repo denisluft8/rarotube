@@ -1,6 +1,5 @@
 import styled, { keyframes } from "styled-components";
 import { colors } from "../../styles/theme";
-import favorite from "../../assets/favorite.svg";
 
 const FadeInAnimation = keyframes`  
   0% { opacity: 0.7; }
@@ -46,15 +45,6 @@ const RowStyled = styled.div`
   border-radius: 10px;
 `;
 
-const FavoriteStyled = styled.img`
-  box-sizing: border-box;
-  width: 19.25px;
-  height: 17.96px;
-  margin-right: 14px;
-  filter: invert(83%) sepia(0%) saturate(4502%) hue-rotate(183deg)
-    brightness(108%) contrast(87%);
-`;
-
 const SkeletonCard = (width, height) => (
   <SkeletonCardStyled>
     <FooterStyled>
@@ -62,7 +52,6 @@ const SkeletonCard = (width, height) => (
         <RowStyled height="10px" width="150px" />
         <RowStyled height="8px" width="100px" />
       </TextContainerStyled>
-      <FavoriteStyled src={favorite} />
     </FooterStyled>
   </SkeletonCardStyled>
 );
