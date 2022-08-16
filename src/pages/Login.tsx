@@ -1,34 +1,35 @@
-import styled from "styled-components";
-import { Button, Input, Panel } from "../components/";
-import { colors, fontSize, lineHeight } from "../styles/theme";
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+import { Button, Input, Panel } from '../components/'
+import { colors, fontSize, lineHeight } from '../styles/theme'
 const DivStyled = styled.div`
   height: calc(100% - 80px);
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 const PanelStyled = styled.div`
   width: 510px;
   height: 409px;
-  background: ${(props) => props.theme.colors.boxBackground};
-  box-shadow: ${(props) => props.theme.colors.boxShadow};
+  background: ${props => props.theme.colors.boxBackground};
+  box-shadow: ${props => props.theme.colors.boxShadow};
   backdrop-filter: blur(20px);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
 
   & > h4 {
-    color: ${(props) => props.theme.colors.primary};
-    font-size: ${fontSize["heading4"]};
+    color: ${props => props.theme.colors.primary};
+    font-size: ${fontSize['heading4']};
     font-style: normal;
     font-weight: 600;
     height: 39px;
-    line-height: ${lineHeight["heading4"]};
+    line-height: ${lineHeight['heading4']};
     width: 150px;
     margin-left: 30px;
     margin-top: 20px;
   }
-`;
+`
 
 const InsideDiv = styled.div`
   display: flex;
@@ -36,13 +37,13 @@ const InsideDiv = styled.div`
   align-items: center;
 
   & > a {
-    color: ${(props) => props.theme.colors.secondary};
-    font-family: "Plus Jakarta Sans";
-    font-size: ${fontSize["body-small"]};
+    color: ${props => props.theme.colors.secondary};
+    font-family: 'Plus Jakarta Sans';
+    font-size: ${fontSize['body-small']};
     font-style: normal;
     font-weight: 500;
     height: 20px;
-    line-height: ${lineHeight["body-small"]};
+    line-height: ${lineHeight['body-small']};
     align-self: flex-start;
     margin-top: 10px;
     margin-left: 33px;
@@ -52,7 +53,7 @@ const InsideDiv = styled.div`
     height: 40px;
     margin-top: 30px;
   }
-`;
+`
 
 const ButtonDiv = styled.div`
   height: 40px;
@@ -62,48 +63,49 @@ const ButtonDiv = styled.div`
   margin-top: 100px;
 
   & > a {
-    color: ${(props) => props.theme.colors.secondary};
-    font-family: "Plus Jakarta Sans";
-    font-size: ${fontSize["body-small"]};
+    color: ${props => props.theme.colors.secondary};
+    font-family: 'Plus Jakarta Sans';
+    font-size: ${fontSize['body-small']};
     font-style: normal;
     font-weight: 500;
     height: 20px;
-    line-height: ${lineHeight["body-small"]};
+    line-height: ${lineHeight['body-small']};
     width: 263px;
     margin-right: 28px;
   }
-`;
-const Home = () => (
+`
+const Login = () => (
   <DivStyled>
     <PanelStyled>
       <h4>Bem Vindo!</h4>
       <InsideDiv>
         <Input
           height="40px"
-          onBlur={() => console.log("onBlur")}
-          onChange={() => console.log("onChange")}
+          onBlur={() => console.log('onBlur')}
+          onChange={() => console.log('onChange')}
           placeholder="Email"
           width="450px"
         />
         <Input
           height="40px"
-          onBlur={() => console.log("onBlur")}
-          onChange={() => console.log("onChange")}
+          onBlur={() => console.log('onBlur')}
+          onChange={() => console.log('onChange')}
           placeholder="Senha"
+          type="password"
           width="450px"
         />
-        <a> Esqueci minha senha</a>
+        <Link to="/changepassword"> Esqueci minha senha</Link>
         <ButtonDiv>
-          <a>Não possui uma conta? Faça seu cadastro!</a>
+          <Link to="/signin">Não possui uma conta? Faça seu cadastro!</Link>
           <Button
-            onClick={() => console.log("onclick")}
-            text={"Entrar"}
+            onClick={() => console.log('onclick')}
+            text={'Entrar'}
             disabled={false}
           />
         </ButtonDiv>
       </InsideDiv>
     </PanelStyled>
   </DivStyled>
-);
+)
 
-export default Home;
+export default Login
