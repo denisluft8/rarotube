@@ -3,12 +3,6 @@ import styled from 'styled-components'
 import { Button, Input } from '../components'
 import { fontSize, lineHeight } from '../styles/theme'
 
-const DivStyled = styled.div`
-  height: calc(100% - 80px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
 const PanelStyled = styled.div`
   width: 510px;
   height: 419px;
@@ -63,7 +57,7 @@ const InsideForm = styled.form`
 `
 
 const ChangePassword = () => (
-  <DivStyled>
+  
     <PanelStyled>
       <h4>Altere sua senha!</h4>
       <InsideForm>
@@ -102,7 +96,6 @@ const ChangePassword = () => (
         </ButtonDiv>
       </InsideForm>
     </PanelStyled>
-  </DivStyled>
 )
 
 export default ChangePassword
