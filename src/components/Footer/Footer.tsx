@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { InstaLogo, LinkedinLogo, TwitterLogo } from "../Icons";
 
 const FooterStyled = styled.footer`
-  position: absolute;
+  position: fixed;
   height: 80px;
   width: 100%;
   bottom: 0;

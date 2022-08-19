@@ -10,6 +10,7 @@ declare module "styled-components" {
       switchButton: string;
       placeholder: string;
       background: string;
+      backgroundImage: string;
       boxShadow: string;
       boxBackground: string;
     };
