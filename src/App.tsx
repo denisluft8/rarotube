@@ -15,6 +15,7 @@ import {
   BrowserRouter as Router,
   BrowserRouter,
 } from "react-router-dom";
+import Home from "./pages/Home";
 
 const App = () => (
   <Layout>
@@ -27,6 +28,7 @@ const App = () => (
         <Route path="/requestcode" element={<RequestCode />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/home" element={<Home />} />
       </Routes>
     </Router>
   </Layout>
