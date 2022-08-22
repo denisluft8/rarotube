@@ -73,7 +73,7 @@ const Home = () => {
           <h4>Todos os vídeos</h4>
         </HeaderStyled>
         <ThumbnailsStyled>
-          {videos.map((video: any) => (
+          {videos && videos.map((video: any) => (
             <VideoCard
               key={video.id}
               date={video.dataPublicacao}
