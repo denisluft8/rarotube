@@ -1,7 +1,9 @@
+import api from "../Services/api";
 import image from "../assets/imagevideotest.svg";
 import styled from "styled-components";
 import { VideoCard } from "../components";
-import { colors, fontSize, lineHeight } from "../styles/theme";
+import { fontSize, lineHeight } from "../styles/theme";
+import { useEffect, useState } from "react";
 
 const BannerStyled = styled.div`
   width: 1306px;
@@ -33,6 +35,8 @@ const AllVideosStyled = styled.div`
 const HeaderStyled = styled.div`
   display: flex;
   justify-content: space-between;
+  height: 39px;
+  margin-bottom: 30px;
 
   & > h4 {
     width: 200px;
@@ -47,73 +51,40 @@ const HeaderStyled = styled.div`
 
 const ThumbnailsStyled = styled.div`
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  gap: 40px;
 `;
 
-const Home = () => (
-  <div>
-    <BannerStyled>
-      <h3>Banner aqui</h3>
-    </BannerStyled>
-    <AllVideosStyled>
-      <HeaderStyled>
-        <h4>Todos os vídeos</h4>
-      </HeaderStyled>
-      <ThumbnailsStyled>
-        <VideoCard
-          date={"Ago 2020"}
-          image={image}
-          name={"Meowth and walk away"}
-        />
-        <VideoCard
-          date={"Ago 2020"}
-          image={image}
-          name={"Meowth and walk away"}
-        />
-        <VideoCard
-          date={"Ago 2020"}
-          image={image}
-          name={"Meowth and walk away"}
-        />
-        <VideoCard
-          date={"Ago 2020"}
-          image={image}
-          name={"Meowth and walk away"}
-        />
-        <VideoCard
-          date={"Ago 2020"}
-          image={image}
-          name={"Meowth and walk away"}
-        />
-        <VideoCard
-          date={"Ago 2020"}
-          image={image}
-          name={"Meowth and walk away"}
-        />
-        <VideoCard
-          date={"Ago 2020"}
-          image={image}
-          name={"Meowth and walk away"}
-        />
-        <VideoCard
-          date={"Ago 2020"}
-          image={image}
-          name={"Meowth and walk away"}
-        />
-        <VideoCard
-          date={"Ago 2020"}
-          image={image}
-          name={"Meowth and walk away"}
-        />
-        <VideoCard
-          date={"Ago 2020"}
-          image={image}
-          name={"Meowth and walk away"}
-        />
-      </ThumbnailsStyled>
-    </AllVideosStyled>
-  </div>
-);
+const Home = () => {
+  const [videos, setVideos] = useState([]);
+
+  useEffect(() => {
+    api.get("videos").then(({ data }) => {
+      setVideos(data);
+    });
+  }, []);
+  return (
+    <div>
+      <BannerStyled>
+        <h3>Banner aqui</h3>
+      </BannerStyled>
+      <AllVideosStyled>
+        <HeaderStyled>
+          <h4>Todos os vídeos</h4>
+        </HeaderStyled>
+        <ThumbnailsStyled>
+          {videos && videos.map((video: any) => (
+            <VideoCard
+              key={video.id}
+              date={video.dataPublicacao}
+              image={video.thumbUrl}
+              name={video.nome}
+            />
+          ))}
+        </ThumbnailsStyled>
+      </AllVideosStyled>
+    </div>
+  );
+};
 
 export default Home;

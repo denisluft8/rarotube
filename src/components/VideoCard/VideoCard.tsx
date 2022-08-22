@@ -9,28 +9,29 @@ interface VideoCardProps {
 }
 
 const VideoCardStyled = styled.div<VideoCardProps>`
-  margin-top: 10px;
-  width: 229.2px;
-  height: 150px;
   background: url(${(props) => props.image});
+  background-size: cover;
+  border-radius: 10px;
   display: flex;
+  height: 150px;
+  width: 229.2px;
 `;
 
 const FooterStyled = styled.div`
-  width: 229.2px;
-  height: 44.91px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  border-radius: 10px;
-  margin-top: auto;
-  display: flex;
   align-items: center;
+  border-radius: 10px;
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  height: 44.91px;
   justify-content: space-between;
+  margin-top: auto;
+  width: 229.2px;
 `;
 
 const TextContainerStyled = styled.div`
-  padding-top: 8px;
   padding-bottom: 2px;
+  padding-top: 8px;
 `;
 
 const TitleStyled = styled.p`
