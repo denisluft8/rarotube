@@ -1,13 +1,14 @@
-import { useState } from 'react'
+import api from '../Services/api'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { Button, Input, Panel } from '../components/'
-import api from '../Services/api'
-import { colors, fontSize, lineHeight } from '../styles/theme'
+import { Button, Input } from '../components'
+import { fontSize, lineHeight } from '../styles/theme'
+import { url } from 'inspector'
 
 const PanelStyled = styled.div`
   width: 510px;
-  height: 409px;
+  height: 554px;
   background: ${props => props.theme.colors.boxBackground};
   box-shadow: ${props => props.theme.colors.boxShadow};
   backdrop-filter: blur(20px);
@@ -27,37 +28,12 @@ const PanelStyled = styled.div`
     margin-top: 20px;
   }
 `
-
-const InsideDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  & > a {
-    color: ${props => props.theme.colors.secondary};
-    font-family: 'Plus Jakarta Sans';
-    font-size: ${fontSize['body-small']};
-    font-style: normal;
-    font-weight: 500;
-    height: 20px;
-    line-height: ${lineHeight['body-small']};
-    align-self: flex-start;
-    margin-top: 10px;
-    margin-left: 33px;
-  }
-
-  & > input {
-    height: 40px;
-    margin-top: 30px;
-  }
-`
-
 const ButtonDiv = styled.div`
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 100px;
+  margin-top: 80px;
 
   & > a {
     color: ${props => props.theme.colors.secondary};
@@ -71,32 +47,57 @@ const ButtonDiv = styled.div`
     margin-right: 28px;
   }
 `
-const Login = () => {
+
+const InsideForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  & > input {
+    height: 40px;
+    margin-top: 30px;
+  }
+`
+
+const Signin = () => {
   const [form, setForm] = useState<{
+    nome: string
     email: string
     senha: string
+    confirma: string
+    codigoAcesso: string
   }>({
+    nome: '',
     email: '',
-    senha: ''
+    senha: '',
+    confirma: '',
+    codigoAcesso: ''
   })
 
-  const onLog = (e: any) => {
+  const onSave = (e: any) => {
     e.preventDefault()
     api
-      .post('/auth/login', form)
-      .then(res => localStorage.setItem('token', res.data.access_token))
+      .post('/auth/cadastrar', form)
+      .then(res => console.log(res))
       .catch(error => console.log(error))
   }
+
   return (
     <PanelStyled>
       <h4>Bem Vindo!</h4>
-      <InsideDiv>
+      <InsideForm>
+        <Input
+          height="40px"
+          onChange={(val: string) => setForm({ ...form, nome: val })}
+          placeholder="Nome"
+          width="450px"
+          value={form.nome}
+        />
         <Input
           height="40px"
           onChange={(val: string) => setForm({ ...form, email: val })}
           placeholder="Email"
-          value={form.email}
           width="450px"
+          value={form.email}
         />
         <Input
           height="40px"
@@ -106,17 +107,31 @@ const Login = () => {
           value={form.senha}
           width="450px"
         />
-        <Link to="/changepassword"> Esqueci minha senha</Link>
+        <Input
+          height="40px"
+          onChange={(val: string) => setForm({ ...form, confirma: val })}
+          placeholder="Confirmar senha"
+          type="password"
+          value={form.confirma}
+          width="450px"
+        />
+        <Input
+          height="40px"
+          onChange={(val: string) => setForm({ ...form, codigoAcesso: val })}
+          placeholder="Código de acesso"
+          value={form.codigoAcesso}
+          width="450px"
+        />
         <ButtonDiv>
-          <Link to="/signin">Não possui uma conta? Faça seu cadastro!</Link>
+          <Link to="/">Já possui uma conta? Faça o login!</Link>
           <Button
-            onClick={(e: any) => onLog(e)}
-            text={'Entrar'}
+            onClick={(e: any) => onSave(e)}
+            text={'Cadastrar'}
             disabled={false}
           />
         </ButtonDiv>
-      </InsideDiv>
+      </InsideForm>
     </PanelStyled>
   )
 }
-export default Login
+export default Signin

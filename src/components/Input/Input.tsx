@@ -3,11 +3,12 @@ import { colors, fontSize, lineHeight } from '../../styles/theme'
 
 interface InputProps {
   height: string
-  onBlur: () => void
-  onChange: () => void
+  onBlur?: () => void
+  onChange: (val: string) => void
   placeholder: string
-  width: string
   type?: string
+  value?: string
+  width: string
 }
 
 const InputStyled = styled.input<InputProps>`
@@ -36,14 +37,16 @@ const Input = ({
   onChange,
   placeholder,
   type,
+  value,
   width
 }: InputProps) => (
   <InputStyled
     height={height}
     onBlur={onBlur}
-    onChange={onChange}
+    onChange={(e: any) => onChange(e.target.value)}
     placeholder={placeholder}
     type={type}
+    value={value}
     width={width}
   ></InputStyled>
 )

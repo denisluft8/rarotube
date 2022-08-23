@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import { InstaLogo, LinkedinLogo, TwitterLogo } from "../Icons";
+import styled from 'styled-components'
+import { InstaLogo, LinkedinLogo, TwitterLogo } from '../Icons'
 
 const FooterStyled = styled.footer`
-  position: fixed;
+  position: relative;
   height: 80px;
   width: 100%;
   bottom: 0;
@@ -13,14 +13,14 @@ const FooterStyled = styled.footer`
   & > a {
     margin: 10px;
   }
-`;
+`
 
 const Footer = () => (
   <FooterStyled>
-    <InstaLogo href={"https://www.instagram.com/raroacademy/"} />
-    <TwitterLogo href={"https://mobile.twitter.com/raroacademy"} />
-    <LinkedinLogo href={"https://br.linkedin.com/showcase/raroacademy"} />
+    <InstaLogo href={'https://www.instagram.com/raroacademy/'} />
+    <TwitterLogo href={'https://mobile.twitter.com/raroacademy'} />
+    <LinkedinLogo href={'https://br.linkedin.com/showcase/raroacademy'} />
   </FooterStyled>
-);
+)
 
-export default Footer;
+export default Footer
