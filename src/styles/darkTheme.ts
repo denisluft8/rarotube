@@ -13,6 +13,7 @@ const darkTheme = {
     boxShadow:
       "3px 3px 10px rgba(0, 0, 0, 0.4), inset 1px 1px 0px rgba(255, 255, 255, 0.3);",
     boxBackground: "rgba(255, 255, 255, 0.1);",
+    commentBackground: colors["davys-grey"],
   },
 };
 

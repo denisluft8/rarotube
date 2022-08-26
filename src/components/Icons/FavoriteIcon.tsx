@@ -12,20 +12,28 @@ const SvgStyled = styled.svg`
   height: 17.96px;
   margin-right: 14px;
   &:hover {
-    fill: ${colors["red-candy-apple"]};
+    fill: ${colors["pink-sasquatch"]};
     & > path {
-      stroke: ${colors["red-candy-apple"]};
+      stroke: ${colors["pink-sasquatch"]};
     }
   }
 `;
 
 const FavoriteIcon = ({ filled }: FavoriteIconProps) => {
-  const [colorFill, setColorFill] = useState(filled ? "red" : "none");
-  const [strokeColor, setStrokeColor] = useState(filled ? "red" : "white");
+  const [colorFill, setColorFill] = useState(
+    filled ? colors["pink-sasquatch"] : "none"
+  );
+  const [strokeColor, setStrokeColor] = useState(
+    filled ? colors["pink-sasquatch"] : "white"
+  );
 
   const handleClick = () => {
-    colorFill === "red" ? setColorFill("none") : setColorFill("red");
-    strokeColor === "red" ? setStrokeColor("white") : setStrokeColor("red");
+    colorFill === colors["pink-sasquatch"]
+      ? setColorFill("none")
+      : setColorFill(colors["pink-sasquatch"]);
+    strokeColor === colors["pink-sasquatch"]
+      ? setStrokeColor("white")
+      : setStrokeColor(colors["pink-sasquatch"]);
   };
 
   return (

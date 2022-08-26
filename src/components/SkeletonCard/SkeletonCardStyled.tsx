@@ -1,12 +1,13 @@
 import styled, { keyframes } from "styled-components";
 import { colors } from "../../styles/theme";
+import { SkeletonCardProps } from "./SkeletonCard";
 
-const FadeInAnimation = keyframes`  
+export const FadeInAnimation = keyframes`  
   0% { opacity: 0.7; }
   50% { opacity: 1; }
   100% { opacity: 0.7; }
 `;
-const SkeletonCardStyled = styled.div`
+export const SkeletonCardStyled = styled.div`
   margin-top: 10px;
   width: 229.2px;
   height: 150px;
@@ -18,7 +19,7 @@ const SkeletonCardStyled = styled.div`
   animation-iteration-count: infinite;
 `;
 
-const FooterStyled = styled.div`
+export const FooterStyled = styled.div`
   width: 229.2px;
   height: 44.91px;
   border-radius: 10px;
@@ -30,12 +31,12 @@ const FooterStyled = styled.div`
   animation-name: ${FadeInAnimation};
 `;
 
-const TextContainerStyled = styled.div`
+export const TextContainerStyled = styled.div`
   padding-top: 8px;
   padding-bottom: 2px;
 `;
 
-const RowStyled = styled.div`
+export const RowStyled = styled.div<SkeletonCardProps>`
   height: ${(props) => props.height};
   width: ${(props) => props.width};
   margin: 0;
@@ -44,16 +45,3 @@ const RowStyled = styled.div`
   background: ${colors["davys-grey"]};
   border-radius: 10px;
 `;
-
-const SkeletonCard = (width, height) => (
-  <SkeletonCardStyled>
-    <FooterStyled>
-      <TextContainerStyled>
-        <RowStyled height="10px" width="150px" />
-        <RowStyled height="8px" width="100px" />
-      </TextContainerStyled>
-    </FooterStyled>
-  </SkeletonCardStyled>
-);
-
-export default SkeletonCard;

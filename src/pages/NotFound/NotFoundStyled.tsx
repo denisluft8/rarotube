@@ -1,9 +1,7 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Button, Input } from "../components";
-import { fontSize, lineHeight } from "../styles/theme";
+import { fontSize, lineHeight } from "../../styles/theme";
 
-const PanelStyled = styled.div`
+export const PanelStyled = styled.div`
   width: 510px;
   height: 169px;
   background: ${(props) => props.theme.colors.boxBackground};
@@ -29,16 +27,3 @@ const PanelStyled = styled.div`
     margin-top: 40px;
   }
 `;
-
-const NotFound = () => (
-  <PanelStyled>
-    <h4>Ops, essa página não foi encontrada!</h4>
-    <Button
-      onClick={() => console.log("onclick")}
-      text={"Ir para a home"}
-      disabled={false}
-    />
-  </PanelStyled>
-);
-
-export default NotFound;
