@@ -25,6 +25,7 @@ const Home = () => {
     const timing = setTimeout(() => {
       loadVideos(sort);
       setLoading(false);
+      favVideos();
     }, 1500);
     return () => clearTimeout(timing);
   }, []);
@@ -32,6 +33,19 @@ const Home = () => {
   const loadVideos = (sort: string) => {
     apiAuth.get(`videos?orderBy=${sort}`).then(({ data }) => {
       setVideos(data);
+    });
+  };
+
+  const favVideos = () => {
+    apiAuth.get("videos/favoritos").then(({ data }) => {
+      setFav(data);
+      console.log(data);
+    });
+  };
+
+  const removeFavVideo = (videoId: string) => {
+    apiAuth.delete(`videos/${videoId}/favoritos`).then(({ data }) => {
+      console.log(data);
     });
   };
 
@@ -58,6 +72,7 @@ const Home = () => {
                 image={video.thumbUrl}
                 name={video.nome}
                 onClickVid={() => context.setVideoId(video.id)}
+                onClickFav={() => removeFavVideo(video.id)}
               />
             ))}
         </FavVideosStyled>

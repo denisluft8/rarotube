@@ -1,5 +1,4 @@
 import { useEffect, useState, useContext } from "react";
-import sendIcon from "../../assets/send.svg";
 import {
   CommentsDiv,
   CommentsFooter,
@@ -24,18 +23,19 @@ const VideoPage = () => {
   const [loading, setLoading] = useState(false);
   const [recVideos, setRecVideos] = useState([]);
   const [video, setVideo] = useState([]);
+  const [comments, setComments] = useState([]);
   const context = useContext(VideoContext);
-
-  const loadVideo = () => {
-    api.get(`videos/${context.videoId}`).then(({ data }) => {
-      setVideo(data);
-      console.log(video);
-    });
-  };
+  const videoId = context.videoId;
 
   const loadRecVideos = () => {
-    apiAuth.get(`videos/${context.videoId}/recomendacoes`).then(({ data }) => {
+    apiAuth.get(`videos/${videoId}`).then(({ data }) => {
+      setVideo(data);
+    });
+    apiAuth.get(`videos/${videoId}/recomendacoes`).then(({ data }) => {
       setRecVideos(data);
+    });
+    apiAuth.get(`videos/${videoId}/comentarios`).then(({ data }) => {
+      setComments(data);
     });
   };
 
@@ -43,12 +43,13 @@ const VideoPage = () => {
     setLoading(true);
     const timing = setTimeout(() => {
       loadRecVideos();
-      loadVideo();
       setLoading(false);
     }, 1500);
     return () => clearTimeout(timing);
   }, []);
 
+  console.log(video);
+  console.log(videoId);
   return (
     <ContainerStyled>
       <RecomendedStyled>
@@ -69,6 +70,7 @@ const VideoPage = () => {
             key={vid.id}
             date={vid.dataPublicacao}
             description={vid.descricao}
+            tags={vid.tags}
             title={vid.nome}
             topic={vid.topico}
             video={vid.url}
@@ -77,7 +79,18 @@ const VideoPage = () => {
 
       <CommentsDiv>
         <CommentsList>
-          <Comments />
+          {comments &&
+            comments.map((comment: any) => (
+              <Comments
+                key={comment.id}
+                comment={comment.texto}
+                name={comment.aluno.nome}
+                date={new Date(comment.createdAt).toLocaleDateString()}
+                downVote={comment.downVotes}
+                upVote={comment.upVotes}
+                profile={comment.aluno.foto}
+              />
+            ))}
         </CommentsList>
         <CommentsFooter>
           <Input

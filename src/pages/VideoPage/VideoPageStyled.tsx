@@ -8,11 +8,8 @@ export const ContainerStyled = styled.div`
 `;
 
 export const RecomendedStyled = styled.div`
-  height: 105px;
   width: 1306px;
-  border-radius: 10px;
-  background: ${(props) => props.theme.colors.boxBackground};
-  box-shadow: ${(props) => props.theme.colors.boxShadow};
+  margin-bottom: 12px;
 `;
 
 export const CommentsFooter = styled.div`
@@ -34,6 +31,7 @@ export const CommentsDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 `;
 
 export const CommentsList = styled.div`

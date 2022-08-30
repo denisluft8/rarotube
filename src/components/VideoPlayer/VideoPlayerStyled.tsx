@@ -1,5 +1,7 @@
 import styled from "styled-components";
-import { colors, fontSize } from "../../styles/theme";
+import { fontSize } from "../../styles/theme";
+
+const tagColors = ["#B5B3E6", "#7A75D1", "#4E47C2", "#343090", "#292772"];
 
 export const IconsStyled = styled.div`
   & > svg {
@@ -43,6 +45,22 @@ export const DescriptionStyled = styled.div`
   font-weight: 400;
   line-height: ${fontSize["body"]};
   margin: 7px 0px;
+`;
+
+export const Tags = styled.div`
+  display: flex;
+  gap: 12px;
+  & > p {
+    color: #ffffff;
+    border-radius: 50px;
+    height: 25px;
+    width: fit-content;
+    padding: 5px 8px;
+  }
+`;
+export const DateTopic = styled.div`
+  display: flex;
+  gap: 12px;
 `;
 
 export const TitleContainer = styled.div`

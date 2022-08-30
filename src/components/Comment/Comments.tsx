@@ -1,4 +1,3 @@
-import avatar from "../../assets/avatar.svg";
 import Vote from "../Icons/Vote";
 import {
   Comment,
@@ -11,24 +10,40 @@ import {
   UpVote,
 } from "./CommentsStyled";
 
-const Comments = () => {
+interface CommentsProps {
+  name: string;
+  profile: string;
+  date: string;
+  comment: string;
+  upVote: string;
+  downVote: string;
+}
+
+const Comments = ({
+  name,
+  profile,
+  date,
+  comment,
+  upVote,
+  downVote,
+}: CommentsProps) => {
   return (
     <CommentDivStyled>
-      <ProfilePic src={avatar}></ProfilePic>
+      <ProfilePic src={profile}></ProfilePic>
       <DivStyled>
-        <Name>Dênis Augusto</Name>
-        <Date>26/08/2022</Date>
+        <Name>{name}</Name>
+        <Date>{date}</Date>
         <Comment>
-          <p>Muito Bom!</p>
+          <p>{comment}</p>
         </Comment>
-          <UpVote>
-            <Vote />
-            <p>15</p>
-          </UpVote>
-          <DownVote>
-            <Vote />
-            <p>13</p>
-          </DownVote>
+        <UpVote>
+          <Vote />
+          <p>{upVote}</p>
+        </UpVote>
+        <DownVote>
+          <Vote />
+          <p>{downVote}</p>
+        </DownVote>
       </DivStyled>
     </CommentDivStyled>
   );
