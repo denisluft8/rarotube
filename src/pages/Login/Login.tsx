@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Input } from "../../components/";
-import getTokenFromLocalStorage from "../../CustomHooks/tokenHook";
 import api from "../../Services/api";
 import { ButtonDiv, InsideDiv, PanelStyled } from "./LoginStyled";
 

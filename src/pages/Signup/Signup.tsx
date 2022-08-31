@@ -23,7 +23,7 @@ const Signup = () => {
   const onSave = (e: any) => {
     e.preventDefault();
     api
-      .post("/auth/cadastrar", form)
+      .post("auth/cadastrar", form)
       .then((res) => console.log(res))
       .catch((error) => console.log(error));
   };
