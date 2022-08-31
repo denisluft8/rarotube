@@ -5,6 +5,8 @@ import api from "../../Services/api";
 import { ButtonDiv, InsideForm, PanelStyled } from "./ChangePasswordStyled";
 
 const ChangePassword = () => {
+  const [message, setMessage] = useState("");
+  const [success, setSuccess] = useState(false);
   const [form, setForm] = useState<{
     senha: string;
     codigoAcesso: string;
@@ -19,6 +21,11 @@ const ChangePassword = () => {
       .patch("auth/recuperar-senha", form)
       .then((res) => console.log(res))
       .catch((error) => console.log(error));
+  };
+
+  const changeSuccess = () => {
+    setSuccess(true);
+    setMessage("Senha alterada. Faça login!");
   };
 
   return (
@@ -55,6 +62,13 @@ const ChangePassword = () => {
             disabled={false}
           />
         </ButtonDiv>
+        {success === true ? (
+          <Link to="/" style={{ color: "green" }}>
+            {message}
+          </Link>
+        ) : (
+          <></>
+        )}
       </InsideForm>
     </PanelStyled>
   );

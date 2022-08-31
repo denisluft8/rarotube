@@ -1,11 +1,15 @@
 import api from "../../Services/api";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Button, Input } from "../../components";
 import { ButtonDiv, InsideForm, PanelStyled } from "./SignupStyled";
 
 const Signup = () => {
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+  const [signedUp, setSignedUp] = useState(false);
+  const redirect = useNavigate();
   const [form, setForm] = useState<{
     nome: string;
     email: string;
@@ -24,8 +28,24 @@ const Signup = () => {
     e.preventDefault();
     api
       .post("auth/cadastrar", form)
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error));
+      .then(signupSuccess)
+      .catch((error) => signupError(error));
+  };
+
+  const signupSuccess = () => {
+    setSignedUp(true);
+    setMessage("Concluído, faça login!");
+    setTimeout(() => {
+      redirect("/");
+    }, 1000);
+  };
+
+  const signupError = (res: any) => {
+    setError(res.response.data.statusCode);
+    console.log(error);
+    res.response.data.statusCode === 400
+      ? setMessage("Usuário já existe. Clique aqui para redefinir senha!")
+      : setMessage("Falha de autenticação.");
   };
 
   return (
@@ -77,6 +97,15 @@ const Signup = () => {
             disabled={false}
           />
         </ButtonDiv>
+        {signedUp === true ? (
+          <span style={{ color: "green" }}>{message}</span>
+        ) : error == "400" ? (
+          <Link style={{ color: "#FF1010" }} to="/changepassword">
+            {message}
+          </Link>
+        ) : (
+          <span style={{ color: "#FF1010" }}>{message}</span>
+        )}
       </InsideForm>
     </PanelStyled>
   );

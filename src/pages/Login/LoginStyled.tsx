@@ -54,6 +54,7 @@ export const ButtonDiv = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 100px;
+  gap: 28px;
 
   & > a {
     color: ${(props) => props.theme.colors.secondary};
@@ -63,7 +64,5 @@ export const ButtonDiv = styled.div`
     font-weight: 500;
     height: 20px;
     line-height: ${lineHeight["body-small"]};
-    width: 263px;
-    margin-right: 28px;
   }
 `;

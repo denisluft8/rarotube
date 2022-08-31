@@ -29,6 +29,7 @@ export const ButtonDiv = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 80px;
+  padding-bottom: 10px;
 
   & > a {
     color: ${props => props.theme.colors.secondary};
