@@ -1,9 +1,7 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Button, Input } from "../components";
-import { fontSize, lineHeight } from "../styles/theme";
+import { fontSize, lineHeight } from "../../styles/theme";
 
-const PanelStyled = styled.div`
+export const PanelStyled = styled.div`
   width: 510px;
   height: 279px;
   background: ${(props) => props.theme.colors.boxBackground};
@@ -25,7 +23,7 @@ const PanelStyled = styled.div`
     margin-top: 20px;
   }
 `;
-const ButtonDiv = styled.div`
+export const ButtonDiv = styled.div`
   height: 40px;
   display: flex;
   align-items: center;
@@ -45,7 +43,7 @@ const ButtonDiv = styled.div`
   }
 `;
 
-const InsideForm = styled.form`
+export const InsideForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,28 +52,3 @@ const InsideForm = styled.form`
     margin-top: 30px;
   }
 `;
-
-const RequestCode = () => (
-  <PanelStyled>
-    <h4>Solicite um código!</h4>
-    <InsideForm>
-      <Input
-        height="40px"
-        onBlur={() => console.log("onBlur")}
-        onChange={() => console.log("onChange")}
-        placeholder="Email"
-        width="450px"
-      />
-      <ButtonDiv>
-        <Link to="/changepassword">Já possui um código? Troque sua senha!</Link>
-        <Button
-          onClick={() => console.log("onclick")}
-          text={"Alterar"}
-          disabled={false}
-        />
-      </ButtonDiv>
-    </InsideForm>
-  </PanelStyled>
-);
-
-export default RequestCode;
