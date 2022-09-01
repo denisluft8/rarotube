@@ -20,11 +20,12 @@ import api from "../../Services/api";
 import { SendIcon } from "../../components/Icons";
 
 const VideoPage = () => {
-  const [loading, setLoading] = useState(false);
-  const [recVideos, setRecVideos] = useState([]);
-  const [video, setVideo] = useState([]);
   const [comments, setComments] = useState([]);
   const context = useContext(VideoContext);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  const [recVideos, setRecVideos] = useState([]);
+  const [video, setVideo] = useState([]);
   const videoId = context.videoId;
 
   const loadRecVideos = () => {
@@ -37,6 +38,14 @@ const VideoPage = () => {
     apiAuth.get(`videos/${videoId}/comentarios`).then(({ data }) => {
       setComments(data);
     });
+  };
+
+  const sendComment = (e: any) => {
+    e.preventDefault();
+    apiAuth
+      .post(`videos/${videoId}/comentarios`, message)
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
@@ -95,11 +104,11 @@ const VideoPage = () => {
         <CommentsFooter>
           <Input
             height="40px"
-            onChange={() => console.log("input")}
+            onChange={(val: string) => setMessage(val)}
             placeholder="Escreva um comentário!"
             width="319px"
           />
-          <Button onClick={() => console.log("send")}>
+          <Button onClick={(e: any) => sendComment(e)}>
             <SendIcon />
           </Button>
         </CommentsFooter>

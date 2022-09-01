@@ -17,6 +17,8 @@ interface CommentsProps {
   comment: string;
   upVote: string;
   downVote: string;
+  voteUp?: () => void;
+  voteDown?: () => void;
 }
 
 const Comments = ({
@@ -26,6 +28,8 @@ const Comments = ({
   comment,
   upVote,
   downVote,
+  voteUp,
+  voteDown,
 }: CommentsProps) => {
   return (
     <CommentDivStyled>
@@ -36,11 +40,11 @@ const Comments = ({
         <Comment>
           <p>{comment}</p>
         </Comment>
-        <UpVote>
+        <UpVote onClick={voteUp}>
           <Vote />
           <p>{upVote}</p>
         </UpVote>
-        <DownVote>
+        <DownVote onClick={voteDown}>
           <Vote />
           <p>{downVote}</p>
         </DownVote>
