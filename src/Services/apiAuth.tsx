@@ -10,7 +10,7 @@ apiAuth.interceptors.request.use(
     config.url = `${apiAuth.defaults.baseURL}/${config.url}`;
     const token = getTokenFromLocalStorage();
     if (token !== "") {
-      config.headers.Authorizarion = `Bearer ${token}`;
+      config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },

@@ -1,4 +1,8 @@
 import { useEffect, useState, useContext } from "react";
+import VideoContext from "../../Contexts/VideoContext";
+import apiAuth from "../../Services/apiAuth";
+import VideoPlayer from "../../components/VideoPlayer/VideoPlayer";
+import { SendIcon } from "../../components/Icons";
 import {
   CommentsDiv,
   CommentsFooter,
@@ -6,7 +10,6 @@ import {
   ContainerStyled,
   RecomendedStyled,
 } from "./VideoPageStyled";
-import VideoContext from "../../Contexts/VideoContext";
 import {
   Button,
   Comments,
@@ -14,10 +17,6 @@ import {
   SkeletonCard,
   VideoCard,
 } from "../../components";
-import apiAuth from "../../Services/apiAuth";
-import VideoPlayer from "../../components/VideoPlayer/VideoPlayer";
-import api from "../../Services/api";
-import { SendIcon } from "../../components/Icons";
 
 const VideoPage = () => {
   const [comments, setComments] = useState([]);
@@ -25,8 +24,34 @@ const VideoPage = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [recVideos, setRecVideos] = useState([]);
-  const [video, setVideo] = useState([]);
   const videoId = context.videoId;
+  const [video, setVideo] = useState<VideoType>({
+    id: "",
+    nome: "",
+    url: "",
+    thumbUrl: "",
+    descricao: "",
+    createdAt: "",
+    duracao: "",
+    dataPublicacao: "",
+    topico: "",
+    tags: [""],
+    turma: null,
+  });
+
+  type VideoType = {
+    id: string;
+    nome: string;
+    url: string;
+    thumbUrl: string;
+    descricao: string;
+    createdAt: string;
+    duracao: string;
+    dataPublicacao: string;
+    topico: string;
+    tags: Array<string>;
+    turma: null;
+  };
 
   const loadRecVideos = () => {
     apiAuth.get(`videos/${videoId}`).then(({ data }) => {
@@ -67,24 +92,21 @@ const VideoPage = () => {
           recVideos.map((video: any) => (
             <VideoCard
               key={video.id}
-              date={video.dataPublicacao}
               image={video.thumbUrl}
               name={video.nome}
             />
           ))}
       </RecomendedStyled>
-      {video &&
-        video.map((vid: any) => (
-          <VideoPlayer
-            key={vid.id}
-            date={vid.dataPublicacao}
-            description={vid.descricao}
-            tags={vid.tags}
-            title={vid.nome}
-            topic={vid.topico}
-            video={vid.url}
-          />
-        ))}
+
+      <VideoPlayer
+        key={video.id}
+        date={new Date(video.dataPublicacao).toLocaleDateString()}
+        description={video.descricao}
+        tags={video.tags}
+        title={video.nome}
+        topic={video.topico}
+        video={video.url}
+      />
 
       <CommentsDiv>
         <CommentsList>

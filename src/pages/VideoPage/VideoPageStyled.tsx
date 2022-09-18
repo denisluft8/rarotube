@@ -8,8 +8,10 @@ export const ContainerStyled = styled.div`
 `;
 
 export const RecomendedStyled = styled.div`
-  width: 1306px;
+  display: flex;
+  gap: 15px;
   margin-bottom: 12px;
+  width: 1306px;
 `;
 
 export const CommentsFooter = styled.div`
@@ -36,4 +38,17 @@ export const CommentsDiv = styled.div`
 
 export const CommentsList = styled.div`
   height: 506px;
+  overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    box-shadow: ${(props) => props.theme.colors.boxShadow};
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: ${(props) => props.theme.colors.commentBackground};
+    border-radius: 10px;
+  }
 `;

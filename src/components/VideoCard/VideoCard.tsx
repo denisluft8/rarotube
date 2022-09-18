@@ -9,7 +9,7 @@ import {
 } from "./VideoCardStyled";
 
 export interface VideoCardProps {
-  date: string;
+  date?: string;
   image: string;
   name: string;
   onClickFav?: any;
@@ -29,7 +29,11 @@ const VideoCard = ({
         <Link to="/video" onClick={onClickVid}>
           <TextContainerStyled>
             <TitleStyled>{name}</TitleStyled>
-            <DateStyled>{new Date(date).toLocaleDateString()}</DateStyled>
+            {date ? (
+              <DateStyled>{new Date(date).toLocaleDateString()}</DateStyled>
+            ) : (
+              <></>
+            )}
           </TextContainerStyled>
         </Link>
         <button onClick={onClickFav}>

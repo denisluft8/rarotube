@@ -1,6 +1,5 @@
 import apiAuth from "../../Services/apiAuth";
 import { SkeletonCard, VideoCard } from "../../components";
-
 import { useContext, useEffect, useState } from "react";
 import {
   AllVideosStyled,

@@ -43,6 +43,8 @@ export const TitleStyled = styled.p`
   line-height: ${lineHeight["body-small"]};
   margin: 0;
   padding-left: 14px;
+  overflow: hidden;
+
 `;
 export const DateStyled = styled.p`
   color: ${colors["light-silver"]};

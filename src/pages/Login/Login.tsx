@@ -7,6 +7,8 @@ import { ButtonDiv, InsideDiv, PanelStyled } from "./LoginStyled";
 const Login = () => {
   const [isLogged, setIsLogged] = useState(false);
   const redirect = useNavigate();
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState(false);
   const [form, setForm] = useState<{
     email: string;
     senha: string;
@@ -14,8 +16,6 @@ const Login = () => {
     email: "",
     senha: "",
   });
-  const [message, setMessage] = useState("");
-  const [error, setError] = useState(false);
 
   const loginSuccess = (res: any) => {
     localStorage.setItem("token", res.data.access_token);

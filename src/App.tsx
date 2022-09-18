@@ -23,7 +23,7 @@ const App = () => (
           <Route path="/requestcode" element={<RequestCode />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/video" element={<VideoPage />} />
+          <Route path="/video/:videoId" element={<VideoPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
