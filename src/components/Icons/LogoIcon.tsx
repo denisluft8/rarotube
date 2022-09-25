@@ -76,6 +76,6 @@ const LogoIcon = () => (
       fill="white"
     />
   </svg>
-);
+)
 
-export default LogoIcon;
+export default LogoIcon

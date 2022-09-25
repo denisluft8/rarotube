@@ -1,89 +1,88 @@
-import { useEffect, useState, useContext } from "react";
-import VideoContext from "../../Contexts/VideoContext";
-import apiAuth from "../../Services/apiAuth";
-import VideoPlayer from "../../components/VideoPlayer/VideoPlayer";
-import { SendIcon } from "../../components/Icons";
+import { useEffect, useState, useContext } from 'react'
+import apiAuth from '../../Services/apiAuth'
+import VideoPlayer from '../../components/VideoPlayer/VideoPlayer'
+import { SendIcon } from '../../components/Icons'
 import {
   CommentsDiv,
   CommentsFooter,
   CommentsList,
   ContainerStyled,
-  RecomendedStyled,
-} from "./VideoPageStyled";
+  RecomendedStyled
+} from './VideoPageStyled'
 import {
   Button,
   Comments,
   Input,
   SkeletonCard,
-  VideoCard,
-} from "../../components";
+  VideoCard
+} from '../../components'
+import { useParams } from 'react-router-dom'
 
 const VideoPage = () => {
-  const [comments, setComments] = useState([]);
-  const context = useContext(VideoContext);
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
-  const [recVideos, setRecVideos] = useState([]);
-  const videoId = context.videoId;
+  const [comments, setComments] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [message, setMessage] = useState('')
+  const [recVideos, setRecVideos] = useState([])
+  const { videoId } = useParams()
   const [video, setVideo] = useState<VideoType>({
-    id: "",
-    nome: "",
-    url: "",
-    thumbUrl: "",
-    descricao: "",
-    createdAt: "",
-    duracao: "",
-    dataPublicacao: "",
-    topico: "",
-    tags: [""],
-    turma: null,
-  });
+    id: '',
+    nome: '',
+    url: '',
+    thumbUrl: '',
+    descricao: '',
+    createdAt: '',
+    duracao: '',
+    dataPublicacao: '',
+    topico: '',
+    tags: [''],
+    turma: null
+  })
 
   type VideoType = {
-    id: string;
-    nome: string;
-    url: string;
-    thumbUrl: string;
-    descricao: string;
-    createdAt: string;
-    duracao: string;
-    dataPublicacao: string;
-    topico: string;
-    tags: Array<string>;
-    turma: null;
-  };
+    id: string
+    nome: string
+    url: string
+    thumbUrl: string
+    descricao: string
+    createdAt: string
+    duracao: string
+    dataPublicacao: string
+    topico: string
+    tags: Array<string>
+    turma: null
+  }
 
   const loadRecVideos = () => {
     apiAuth.get(`videos/${videoId}`).then(({ data }) => {
-      setVideo(data);
-    });
+      setVideo(data)
+    })
     apiAuth.get(`videos/${videoId}/recomendacoes`).then(({ data }) => {
-      setRecVideos(data);
-    });
+      setRecVideos(data)
+    })
     apiAuth.get(`videos/${videoId}/comentarios`).then(({ data }) => {
-      setComments(data);
-    });
-  };
+      setComments(data)
+    })
+  }
 
   const sendComment = (e: any) => {
-    e.preventDefault();
+    e.preventDefault()
     apiAuth
       .post(`videos/${videoId}/comentarios`, message)
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error));
-  };
+      .then(res => console.log(res))
+      .catch(error => console.log(error))
+  }
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     const timing = setTimeout(() => {
-      loadRecVideos();
-      setLoading(false);
-    }, 1500);
-    return () => clearTimeout(timing);
-  }, []);
+      loadRecVideos()
+      setLoading(false)
+    }, 1500)
+    return () => clearTimeout(timing)
+  }, [])
 
-  console.log(video);
-  console.log(videoId);
+  console.log(video)
+  console.log(videoId)
   return (
     <ContainerStyled>
       <RecomendedStyled>
@@ -136,7 +135,7 @@ const VideoPage = () => {
         </CommentsFooter>
       </CommentsDiv>
     </ContainerStyled>
-  );
-};
+  )
+}
 
-export default VideoPage;
+export default VideoPage

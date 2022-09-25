@@ -1,32 +1,26 @@
-import { Link } from "react-router-dom";
-import FavoriteIcon from "../Icons/FavoriteIcon";
+import { Link } from 'react-router-dom'
+import FavoriteIcon from '../Icons/FavoriteIcon'
 import {
   DateStyled,
   FooterStyled,
   TextContainerStyled,
   TitleStyled,
-  VideoCardStyled,
-} from "./VideoCardStyled";
+  VideoCardStyled
+} from './VideoCardStyled'
 
 export interface VideoCardProps {
-  date?: string;
-  image: string;
-  name: string;
-  onClickFav?: any;
-  onClickVid?: any;
+  date?: string
+  image: string
+  id?: string
+  name: string
+  onClickFav?: any
 }
 
-const VideoCard = ({
-  image,
-  name,
-  date,
-  onClickFav,
-  onClickVid,
-}: VideoCardProps) => {
+const VideoCard = ({ date, id, image, name, onClickFav }: VideoCardProps) => {
   return (
-    <VideoCardStyled date={date} image={image} name={name}>
+    <VideoCardStyled date={date} image={image} name={name} id={id}>
       <FooterStyled>
-        <Link to="/video" onClick={onClickVid}>
+        <Link to={`/video/${id}`}>
           <TextContainerStyled>
             <TitleStyled>{name}</TitleStyled>
             {date ? (
@@ -41,7 +35,7 @@ const VideoCard = ({
         </button>
       </FooterStyled>
     </VideoCardStyled>
-  );
-};
+  )
+}
 
-export default VideoCard;
+export default VideoCard

@@ -1,6 +1,6 @@
-import apiAuth from "../../Services/apiAuth";
-import { SkeletonCard, VideoCard } from "../../components";
-import { useContext, useEffect, useState } from "react";
+import apiAuth from '../../Services/apiAuth'
+import { SkeletonCard, VideoCard } from '../../components'
+import { useEffect, useState } from 'react'
 import {
   AllVideosStyled,
   BannerStyled,
@@ -8,52 +8,51 @@ import {
   FavVideosStyled,
   HeaderStyled,
   SortStyled,
-  ThumbnailsStyled,
-} from "./HomeStyled";
-import VideoContext from "../../Contexts/VideoContext";
+  ThumbnailsStyled
+} from './HomeStyled'
+import api from '../../Services/api'
 
 const Home = () => {
-  const [loading, setLoading] = useState(false);
-  const [videos, setVideos] = useState([]);
-  const [sort, setSort] = useState("nome");
-  const context = useContext(VideoContext);
-  const [fav, setFav] = useState([]);
+  const [loading, setLoading] = useState(false)
+  const [videos, setVideos] = useState([])
+  const [sort, setSort] = useState('nome')
+  const [fav, setFav] = useState([])
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     const timing = setTimeout(() => {
-      loadVideos(sort);
-      setLoading(false);
-      favVideos();
-    }, 1500);
-    return () => clearTimeout(timing);
-  }, []);
+      loadVideos(sort)
+      setLoading(false)
+      favVideos()
+    }, 1500)
+    return () => clearTimeout(timing)
+  }, [])
 
   const loadVideos = (sort: string) => {
-    apiAuth.get(`videos?orderBy=${sort}`).then(({ data }) => {
-      setVideos(data);
-    });
-  };
+    api.get(`videos?orderBy=${sort}`).then(({ data }) => {
+      setVideos(data)
+    })
+  }
 
   const favVideos = () => {
-    apiAuth.get("videos/favoritos").then(({ data }) => {
-      setFav(data);
-      console.log(data);
-    });
-  };
+    apiAuth.get('videos/favoritos').then(({ data }) => {
+      setFav(data)
+      console.log(data)
+    })
+  }
 
   const removeFavVideo = (videoId: string) => {
     apiAuth.delete(`videos/${videoId}/favoritos`).then(({ data }) => {
-      console.log(data);
-    });
-  };
+      console.log(data)
+    })
+  }
 
   const addFavVideos = (videoID: string) => {
     apiAuth
       .post(`videos/${videoID}/favoritos`)
       .then(({ data }) => {})
-      .catch((error) => console.log(error));
-  };
+      .catch(error => console.log(error))
+  }
 
   return (
     <>
@@ -66,11 +65,11 @@ const Home = () => {
           {fav &&
             fav.map((video: any) => (
               <VideoCard
-                key={video.id}
                 date={video.dataPublicacao}
+                id={video.id}
+                key={video.id}
                 image={video.thumbUrl}
                 name={video.nome}
-                onClickVid={() => context.setVideoId(video.id)}
                 onClickFav={() => removeFavVideo(video.id)}
               />
             ))}
@@ -79,10 +78,7 @@ const Home = () => {
       <AllVideosStyled>
         <HeaderStyled>
           <h4>Todos os vídeos</h4>
-          <SortStyled
-            name="sorting"
-            onChange={(e) => loadVideos(e.target.value)}
-          >
+          <SortStyled name="sorting" onChange={e => loadVideos(e.target.value)}>
             <option value="nome">Título</option>
             <option value="dataPublicacao">Data</option>
           </SortStyled>
@@ -93,18 +89,18 @@ const Home = () => {
             videos.length > 0 &&
             videos.map((video: any) => (
               <VideoCard
-                key={video.id}
                 date={video.dataPublicacao}
                 image={video.thumbUrl}
+                id={video.id}
+                key={video.id}
                 name={video.nome}
-                onClickVid={() => context.setVideoId(video.id)}
                 onClickFav={() => addFavVideos(video.id)}
               />
             ))}
         </ThumbnailsStyled>
       </AllVideosStyled>
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
