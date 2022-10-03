@@ -1,9 +1,9 @@
-import { useState } from "react";
-import styled from "styled-components";
-import { colors } from "../../styles/theme";
+import { useState } from 'react'
+import styled from 'styled-components'
+import { colors } from '../../styles/theme'
 
 interface FavoriteIconProps {
-  filled?: boolean;
+  filled?: boolean
 }
 
 const SvgStyled = styled.svg`
@@ -12,29 +12,29 @@ const SvgStyled = styled.svg`
   height: 17.96px;
   margin-right: 14px;
   &:hover {
-    fill: ${colors["pink-sasquatch"]};
+    fill: ${colors['pink-sasquatch']};
     & > path {
-      stroke: ${colors["pink-sasquatch"]};
+      stroke: ${colors['pink-sasquatch']};
     }
   }
-`;
+`
 
 const FavoriteIcon = ({ filled }: FavoriteIconProps) => {
   const [colorFill, setColorFill] = useState(
-    filled ? colors["pink-sasquatch"] : "none"
-  );
+    filled ? colors['pink-sasquatch'] : 'none'
+  )
   const [strokeColor, setStrokeColor] = useState(
-    filled ? colors["pink-sasquatch"] : "white"
-  );
+    filled ? colors['pink-sasquatch'] : 'white'
+  )
 
   const handleClick = () => {
-    colorFill === colors["pink-sasquatch"]
-      ? setColorFill("none")
-      : setColorFill(colors["pink-sasquatch"]);
-    strokeColor === colors["pink-sasquatch"]
-      ? setStrokeColor("white")
-      : setStrokeColor(colors["pink-sasquatch"]);
-  };
+    colorFill === colors['pink-sasquatch']
+      ? setColorFill('none')
+      : setColorFill(colors['pink-sasquatch'])
+    strokeColor === colors['pink-sasquatch']
+      ? setStrokeColor('white')
+      : setStrokeColor(colors['pink-sasquatch'])
+  }
 
   return (
     <SvgStyled
@@ -49,6 +49,6 @@ const FavoriteIcon = ({ filled }: FavoriteIconProps) => {
         stroke={strokeColor}
       />
     </SvgStyled>
-  );
-};
-export default FavoriteIcon;
+  )
+}
+export default FavoriteIcon

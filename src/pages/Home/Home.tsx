@@ -11,6 +11,7 @@ import {
   ThumbnailsStyled
 } from './HomeStyled'
 import api from '../../Services/api'
+import { factory } from 'typescript'
 
 const Home = () => {
   const [loading, setLoading] = useState(false)
@@ -23,10 +24,13 @@ const Home = () => {
     const timing = setTimeout(() => {
       loadVideos(sort)
       setLoading(false)
-      favVideos()
     }, 1500)
     return () => clearTimeout(timing)
   }, [])
+
+  useEffect(() => {
+    favVideos()
+  })
 
   const loadVideos = (sort: string) => {
     api.get(`videos?orderBy=${sort}`).then(({ data }) => {
@@ -37,14 +41,11 @@ const Home = () => {
   const favVideos = () => {
     apiAuth.get('videos/favoritos').then(({ data }) => {
       setFav(data)
-      console.log(data)
     })
   }
 
   const removeFavVideo = (videoId: string) => {
-    apiAuth.delete(`videos/${videoId}/favoritos`).then(({ data }) => {
-      console.log(data)
-    })
+    apiAuth.delete(`videos/${videoId}/favoritos`).then(({ data }) => {})
   }
 
   const addFavVideos = (videoID: string) => {
@@ -59,22 +60,27 @@ const Home = () => {
       <BannerStyled>
         <h3>Banner aqui</h3>
       </BannerStyled>
-      <FavoritesStyled>
-        <h4>Favoritos</h4>
-        <FavVideosStyled>
-          {fav &&
-            fav.map((video: any) => (
-              <VideoCard
-                date={video.dataPublicacao}
-                id={video.id}
-                key={video.id}
-                image={video.thumbUrl}
-                name={video.nome}
-                onClickFav={() => removeFavVideo(video.id)}
-              />
-            ))}
-        </FavVideosStyled>
-      </FavoritesStyled>
+      {fav.length !== 0 ? (
+        <FavoritesStyled>
+          <h4>Favoritos</h4>
+          <FavVideosStyled>
+            {fav &&
+              fav.map((video: any) => (
+                <VideoCard
+                  date={video.dataPublicacao}
+                  filled
+                  id={video.id}
+                  key={video.id}
+                  image={video.thumbUrl}
+                  name={video.nome}
+                  onClickFav={() => removeFavVideo(video.id)}
+                />
+              ))}
+          </FavVideosStyled>
+        </FavoritesStyled>
+      ) : (
+        <></>
+      )}
       <AllVideosStyled>
         <HeaderStyled>
           <h4>Todos os vídeos</h4>

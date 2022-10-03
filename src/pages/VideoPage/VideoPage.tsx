@@ -17,6 +17,7 @@ import {
   VideoCard
 } from '../../components'
 import { useParams } from 'react-router-dom'
+import api from '../../Services/api'
 
 const VideoPage = () => {
   const [comments, setComments] = useState([])
@@ -56,7 +57,7 @@ const VideoPage = () => {
     apiAuth.get(`videos/${videoId}`).then(({ data }) => {
       setVideo(data)
     })
-    apiAuth.get(`videos/${videoId}/recomendacoes`).then(({ data }) => {
+    api.get(`videos/${videoId}/recomendacoes`).then(({ data }) => {
       setRecVideos(data)
     })
     apiAuth.get(`videos/${videoId}/comentarios`).then(({ data }) => {
@@ -66,7 +67,7 @@ const VideoPage = () => {
 
   const sendComment = (e: any) => {
     e.preventDefault()
-    apiAuth
+    api
       .post(`videos/${videoId}/comentarios`, message)
       .then(res => console.log(res))
       .catch(error => console.log(error))
@@ -81,8 +82,6 @@ const VideoPage = () => {
     return () => clearTimeout(timing)
   }, [])
 
-  console.log(video)
-  console.log(videoId)
   return (
     <ContainerStyled>
       <RecomendedStyled>

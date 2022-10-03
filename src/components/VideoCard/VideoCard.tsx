@@ -10,13 +10,21 @@ import {
 
 export interface VideoCardProps {
   date?: string
+  filled?: boolean
   image: string
   id?: string
   name: string
   onClickFav?: any
 }
 
-const VideoCard = ({ date, id, image, name, onClickFav }: VideoCardProps) => {
+const VideoCard = ({
+  date,
+  filled,
+  id,
+  image,
+  name,
+  onClickFav
+}: VideoCardProps) => {
   return (
     <VideoCardStyled date={date} image={image} name={name} id={id}>
       <FooterStyled>
@@ -31,7 +39,7 @@ const VideoCard = ({ date, id, image, name, onClickFav }: VideoCardProps) => {
           </TextContainerStyled>
         </Link>
         <button onClick={onClickFav}>
-          <FavoriteIcon />
+          <FavoriteIcon filled={filled} />
         </button>
       </FooterStyled>
     </VideoCardStyled>
