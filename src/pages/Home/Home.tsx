@@ -11,7 +11,6 @@ import {
   ThumbnailsStyled
 } from './HomeStyled'
 import api from '../../Services/api'
-import { factory } from 'typescript'
 
 const Home = () => {
   const [loading, setLoading] = useState(false)
@@ -22,15 +21,15 @@ const Home = () => {
   useEffect(() => {
     setLoading(true)
     const timing = setTimeout(() => {
-      loadVideos(sort)
       setLoading(false)
-    }, 1500)
+    }, 1000)
     return () => clearTimeout(timing)
   }, [])
 
   useEffect(() => {
+    loadVideos(sort)
     favVideos()
-  })
+  }, [fav])
 
   const loadVideos = (sort: string) => {
     api.get(`videos?orderBy=${sort}`).then(({ data }) => {
@@ -68,12 +67,13 @@ const Home = () => {
               fav.map((video: any) => (
                 <VideoCard
                   date={video.dataPublicacao}
-                  filled
+                  favArr={fav}
                   id={video.id}
                   key={video.id}
                   image={video.thumbUrl}
                   name={video.nome}
-                  onClickFav={() => removeFavVideo(video.id)}
+                  favAdd={() => addFavVideos(video.id)}
+                  favRemove={() => removeFavVideo(video.id)}
                 />
               ))}
           </FavVideosStyled>
@@ -90,17 +90,20 @@ const Home = () => {
           </SortStyled>
         </HeaderStyled>
         <ThumbnailsStyled>
-          {loading && <SkeletonCard />}
+          {loading &&
+            videos.map((video: any) => <SkeletonCard key={video.id} />)}
           {!loading &&
-            videos.length > 0 &&
+            videos &&
             videos.map((video: any) => (
               <VideoCard
                 date={video.dataPublicacao}
+                favArr={fav}
                 image={video.thumbUrl}
                 id={video.id}
                 key={video.id}
                 name={video.nome}
-                onClickFav={() => addFavVideos(video.id)}
+                favAdd={() => addFavVideos(video.id)}
+                favRemove={() => removeFavVideo(video.id)}
               />
             ))}
         </ThumbnailsStyled>

@@ -10,7 +10,9 @@ import {
 
 export interface VideoCardProps {
   date?: string
-  filled?: boolean
+  favAdd?: any
+  favRemove?: any
+  favArr?: any
   image: string
   id?: string
   name: string
@@ -19,14 +21,23 @@ export interface VideoCardProps {
 
 const VideoCard = ({
   date,
-  filled,
+  favAdd,
+  favRemove,
+  favArr,
   id,
   image,
-  name,
-  onClickFav
+  name
 }: VideoCardProps) => {
   return (
-    <VideoCardStyled date={date} image={image} name={name} id={id}>
+    <VideoCardStyled
+      date={date}
+      image={image}
+      name={name}
+      id={id}
+      favArr={favArr}
+      favAdd={favAdd}
+      favRemove={favRemove}
+    >
       <FooterStyled>
         <Link to={`/video/${id}`}>
           <TextContainerStyled>
@@ -38,9 +49,12 @@ const VideoCard = ({
             )}
           </TextContainerStyled>
         </Link>
-        <button onClick={onClickFav}>
-          <FavoriteIcon filled={filled} />
-        </button>
+        <FavoriteIcon
+          favArr={favArr}
+          favId={id}
+          favAdd={favAdd}
+          favRemove={favRemove}
+        />
       </FooterStyled>
     </VideoCardStyled>
   )
