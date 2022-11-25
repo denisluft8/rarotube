@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "/rarotube/static/css/main.5367e4f6.css",
+    "main.js": "/rarotube/static/js/main.5a2af619.js",
+    "reactPlayerYouTube.js": "/rarotube/static/js/reactPlayerYouTube.d5a3a47e.chunk.js",
+    "reactPlayerSoundCloud.js": "/rarotube/static/js/reactPlayerSoundCloud.89563422.chunk.js",
+    "reactPlayerVimeo.js": "/rarotube/static/js/reactPlayerVimeo.16ebe9ca.chunk.js",
+    "reactPlayerFacebook.js": "/rarotube/static/js/reactPlayerFacebook.4eef7a0e.chunk.js",
+    "reactPlayerStreamable.js": "/rarotube/static/js/reactPlayerStreamable.19cc6408.chunk.js",
+    "reactPlayerWistia.js": "/rarotube/static/js/reactPlayerWistia.b4a49143.chunk.js",
+    "reactPlayerTwitch.js": "/rarotube/static/js/reactPlayerTwitch.3428fac1.chunk.js",
+    "reactPlayerDailyMotion.js": "/rarotube/static/js/reactPlayerDailyMotion.a6573cf6.chunk.js",
+    "reactPlayerMixcloud.js": "/rarotube/static/js/reactPlayerMixcloud.c35027fd.chunk.js",
+    "reactPlayerVidyard.js": "/rarotube/static/js/reactPlayerVidyard.e678788a.chunk.js",
+    "reactPlayerKaltura.js": "/rarotube/static/js/reactPlayerKaltura.20426fbf.chunk.js",
+    "reactPlayerFilePlayer.js": "/rarotube/static/js/reactPlayerFilePlayer.d712a028.chunk.js",
+    "reactPlayerPreview.js": "/rarotube/static/js/reactPlayerPreview.75f50566.chunk.js",
+    "static/js/787.9db1f79a.chunk.js": "/rarotube/static/js/787.9db1f79a.chunk.js",
+    "index.html": "/rarotube/index.html",
+    "main.5367e4f6.css.map": "/rarotube/static/css/main.5367e4f6.css.map",
+    "main.5a2af619.js.map": "/rarotube/static/js/main.5a2af619.js.map",
+    "reactPlayerYouTube.d5a3a47e.chunk.js.map": "/rarotube/static/js/reactPlayerYouTube.d5a3a47e.chunk.js.map",
+    "reactPlayerSoundCloud.89563422.chunk.js.map": "/rarotube/static/js/reactPlayerSoundCloud.89563422.chunk.js.map",
+    "reactPlayerVimeo.16ebe9ca.chunk.js.map": "/rarotube/static/js/reactPlayerVimeo.16ebe9ca.chunk.js.map",
+    "reactPlayerFacebook.4eef7a0e.chunk.js.map": "/rarotube/static/js/reactPlayerFacebook.4eef7a0e.chunk.js.map",
+    "reactPlayerStreamable.19cc6408.chunk.js.map": "/rarotube/static/js/reactPlayerStreamable.19cc6408.chunk.js.map",
+    "reactPlayerWistia.b4a49143.chunk.js.map": "/rarotube/static/js/reactPlayerWistia.b4a49143.chunk.js.map",
+    "reactPlayerTwitch.3428fac1.chunk.js.map": "/rarotube/static/js/reactPlayerTwitch.3428fac1.chunk.js.map",
+    "reactPlayerDailyMotion.a6573cf6.chunk.js.map": "/rarotube/static/js/reactPlayerDailyMotion.a6573cf6.chunk.js.map",
+    "reactPlayerMixcloud.c35027fd.chunk.js.map": "/rarotube/static/js/reactPlayerMixcloud.c35027fd.chunk.js.map",
+    "reactPlayerVidyard.e678788a.chunk.js.map": "/rarotube/static/js/reactPlayerVidyard.e678788a.chunk.js.map",
+    "reactPlayerKaltura.20426fbf.chunk.js.map": "/rarotube/static/js/reactPlayerKaltura.20426fbf.chunk.js.map",
+    "reactPlayerFilePlayer.d712a028.chunk.js.map": "/rarotube/static/js/reactPlayerFilePlayer.d712a028.chunk.js.map",
+    "reactPlayerPreview.75f50566.chunk.js.map": "/rarotube/static/js/reactPlayerPreview.75f50566.chunk.js.map",
+    "787.9db1f79a.chunk.js.map": "/rarotube/static/js/787.9db1f79a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5367e4f6.css",
+    "static/js/main.5a2af619.js"
+  ]
+}
