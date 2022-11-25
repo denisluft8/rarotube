@@ -22,11 +22,15 @@
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },
+
+  "homepage": "https://denisluft8.github.io/rarotube",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -48,5 +52,8 @@
   },
   "resolutions": {
     "styled-components": "^5"
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }

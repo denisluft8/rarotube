@@ -1,6 +1,6 @@
-import { GlobalStyle } from './styles/theme'
-import { Routes, Route, BrowserRouter } from 'react-router-dom'
-import { Layout } from './components'
+import { GlobalStyle } from "./styles/theme";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Layout } from "./components";
 import {
   ChangePassword,
   Home,
@@ -8,12 +8,12 @@ import {
   NotFound,
   RequestCode,
   Signup,
-  VideoPage
-} from './pages'
+  VideoPage,
+} from "./pages";
 
 const App = () => (
   <Layout>
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <GlobalStyle />
       <Routes>
         <Route path="/" element={<Login />} />
@@ -26,5 +26,5 @@ const App = () => (
       </Routes>
     </BrowserRouter>
   </Layout>
-)
-export default App
+);
+export default App;
